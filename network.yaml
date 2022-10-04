@@ -1,0 +1,24 @@
+simulation:
+    Ts: 1.0
+    tSample: 400
+    nSample: 12
+    pixel: 34
+neuron:
+    type:     SRMALPHA
+    theta:    10
+    tauSr:    10.0
+    tauRef:   1.0
+    scaleRef: 2     # relative to theta
+    tauRho:   1     # relative to theta #0.43429448190325176
+    scaleRho: 1
+training:
+    error:
+        type: NumSpikes #ProbSpikes #NumSpikes
+        probSlidingWin: 20  # only valid for ProbSpikes
+        tgtSpikeRegion: {start: 0, stop: 400}    # only valid for NumSpikes and ProbSpikes
+        tgtSpikeCount: {true: 200, false: 0}    # only valid for NumSpikes
+    path:
+        # out:     OutFiles/
+        in:      dv_dataset/
+        train:   dv_dataset/train.txt
+        test:    dv_dataset/test.txt
